@@ -1,0 +1,9 @@
+<super-tabs 
+id="mainTabs" 
+[config]="{ sideMenu: 'left' }" 
+(tabSelect)="onTabSelect($event)">
+  <super-tab [root]="tab1Root" id="homeTab"></super-tab>
+  <super-tab [root]="tab2Root" id="recipeTab"></super-tab>
+  <super-tab [root]="tab3Root" id="videoTab"></super-tab>
+  <super-tab [root]="tab4Root" id="instructionTab"></super-tab>
+</super-tabs>
