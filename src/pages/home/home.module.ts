@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { AdminPage } from './admin';
+import { HomePage } from './home';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 
 @NgModule({
   declarations: [
-    AdminPage,
+    HomePage,
   ],
   imports: [
     SuperTabsModule,
-    IonicPageModule.forChild(AdminPage),
+    IonicPageModule.forChild(HomePage),
   ],
 })
-export class AdminPageModule {}
+export class InstructionsPageModule {}

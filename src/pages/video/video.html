@@ -7,13 +7,7 @@
 
 
 <ion-content padding>
-  <!-- <vg-player>
-      <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
-          <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
-      </video>
-  </vg-player> -->
 
-  <!-- <div class="videogular-container"> -->
   <vg-player (onPlayerReady)="onPlayerReady($event)">
     <vg-overlay-play></vg-overlay-play>
     <vg-buffering></vg-buffering>
@@ -45,15 +39,22 @@
     </vg-controls>
 
     <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
-      <!-- <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4"> -->
-      <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
-      <!-- <source src="http://static.videogular.com/assets/videos/videogular.ogg" type="video/ogg">
-          <source src="http://static.videogular.com/assets/videos/videogular.webm" type="video/webm"> -->
-
-      <track kind="subtitles" label="English" src="http://static.videogular.com/assets/subs/pale-blue-dot.vtt" srclang="en" 
-        default #metadataTrack vgCuePoints (onEnterCuePoint)="onEnterCuePoint($event)" (onExitCuePoint)="onExitCuePoint($event)">
-      <track kind="subtitles" label="Español" src="http://static.videogular.com/assets/subs/pale-blue-dot-es.vtt" srclang="es">
+      <source src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/videogular.mp4" type="video/mp4">
+      <track kind="subtitles" label="English" src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/pale-blue-dot.vtt"
+        srclang="en" default #metadataTrack vgCuePoints (onEnterCuePoint)="onEnterCuePoint($event)" (onExitCuePoint)="onExitCuePoint($event)">
+      <track kind="subtitles" label="Español" src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/pale-blue-dot-es.vtt"
+        srclang="es">
     </video>
   </vg-player>
-  <!-- </div> -->
 </ion-content>
+
+<!-- <vg-player>
+      <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+          <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
+      </video>
+  </vg-player> -->
+
+<!-- <source src="http://videogular.com/assets/videos/videogular.mp4" type="video/mp4"> 
+      <track kind="subtitles" label="English" src="http://videogular.com/assets/subs/pale-blue-dot.vtt" srclang="en" 
+        default #metadataTrack vgCuePoints (onEnterCuePoint)="onEnterCuePoint($event)" (onExitCuePoint)="onExitCuePoint($event)">
+      <track kind="subtitles" label="Español" src="http://videogular.com/assets/subs/pale-blue-dot-es.vtt" srclang="es">-->
