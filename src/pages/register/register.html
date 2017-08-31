@@ -1,0 +1,19 @@
+<ion-header class="ion-header">
+  <ion-navbar>
+    <!-- <ion-title>Register</ion-title> -->
+    <img src="assets/img/logo.png" />
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="register">  
+  <div class="register-btn-holder">
+    <h3>Register with</h3>
+    <button ion-button full medium icon-left color="danger" class="social-btn btn-google" style="text-align:left;"><ion-icon name="logo-google"></ion-icon> Register with Google</button>
+    <button ion-button full medium icon-left color="primary" class="social-btn btn-facebook" style="text-align:left;"><ion-icon name="logo-facebook"></ion-icon> Register with Facebook</button>
+    <button ion-button full medium icon-left color="dark" class="social-btn btn-mail" style="text-align:left;" (click)='openRegisterEmailPage()' ><ion-icon name="mail"></ion-icon> Register with Email</button>
+  </div>
+  <div class="submit-section">
+    <h3>Or</h3>
+    <button ion-button full medium color="light" class="submit-btn register-btn" (click)='openLoginPage()' >LOGIN</button>
+  </div>
+</ion-content>

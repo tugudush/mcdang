@@ -10,11 +10,16 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AboutPage } from '../pages/about/about';
 import { AdminPage } from '../pages/admin/admin';
 import { VideoPage } from '../pages/video/video';
+import { RegisterPage } from '../pages/register/register';
+import { LoginPage } from '../pages/login/login';
+import { RegisterEmailPage } from '../pages/register-email/register-email';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UtilProvider } from '../providers/util/util';
 import { HttpModule } from '@angular/http';
 import { SuperTabsModule } from 'ionic2-super-tabs';
+
 
 import {VgCoreModule} from 'videogular2/core';
 import {VgControlsModule} from 'videogular2/controls';
@@ -33,7 +38,10 @@ import {VgBufferingModule} from 'videogular2/buffering';
     VideoPage,
     TabsPage,
     AboutPage,
-    AdminPage
+    AdminPage,
+    RegisterPage,
+    LoginPage,
+    RegisterEmailPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +62,10 @@ import {VgBufferingModule} from 'videogular2/buffering';
     VideoPage,
     TabsPage,
     AboutPage,
-    AdminPage
+    AdminPage,
+    RegisterPage,
+    LoginPage,
+    RegisterEmailPage
   ],
   providers: [
     StatusBar,
