@@ -1,17 +1,4 @@
 {
-<<<<<<< HEAD
-    "name": "mcdang",
-    "version": "0.5",
-    "author": "shiftleft",
-    "homepage": "http://www.theshiftleft.com/mcdang",
-    "private": true,
-    "scripts": {
-        "clean": "ionic-app-scripts clean",
-        "build": "ionic-app-scripts build",
-        "lint": "ionic-app-scripts lint",
-        "ionic:build": "ionic-app-scripts build",
-        "ionic:serve": "ionic-app-scripts serve"
-=======
   "name": "mcdang",
   "version": "0.4",
   "author": "shiftleft",
@@ -71,7 +58,6 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
       "ionic-plugin-keyboard": {}
->>>>>>> eeb1d81f9f1f7889cca0c6df0a2eb06bcfb9814f
     },
     "platforms": [
       "android"
