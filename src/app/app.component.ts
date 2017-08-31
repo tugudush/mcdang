@@ -12,7 +12,7 @@ import { RegisterPage } from '../pages/register/register';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = RegisterPage;
+  rootPage:any = TabsPage;  //RegisterPage;
   public pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(

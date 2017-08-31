@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * on Ionic pages and navigation.
  */
 
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -25,7 +25,9 @@ export class LoginPage {
   }
 
   openHomePage() {
-	this.navCtrl.push(HomePage);
+    // Changed 31 Aug 2017 by Dirk - TabsPage is our homepage as it takes care of the menu 
+    // and the tabs as well as display the HomePage.
+	this.navCtrl.push(TabsPage);  
   }
 
 }
