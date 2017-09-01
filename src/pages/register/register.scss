@@ -26,7 +26,11 @@ page-register {
 			padding-left:0;
 			padding-right: 0;
 			padding-top: 0;
-			background-color: #ffffff;
+			background:url('../assets/img/action-bg-green.jpg') no-repeat center bottom #ffffff;
+			-webkit-background-size: 100% auto;
+			-moz-background-size: 100% auto;
+			-o-background-size: 100% auto;
+			background-size: 100% auto;
 			.register-btn-holder {
 				background:#ffffff; 
 				padding:20px 30px;
@@ -68,7 +72,6 @@ page-register {
 			}
 		}
 		.submit-section {
-			background:url('../assets/img/action-bg-green.jpg') no-repeat center top #ffffff;
 			-webkit-background-size: 100% auto;
 			-moz-background-size: 100% auto;
 			-o-background-size: 100% auto;

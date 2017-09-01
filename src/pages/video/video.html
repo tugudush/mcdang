@@ -1,51 +1,73 @@
-<ion-header>
-  <!-- 
+<ion-header class="ion-header">
   <ion-navbar>
-    <ion-title>video</ion-title>
-  </ion-navbar> -->
+    <!-- <ion-title>Register</ion-title> -->
+    <img src="assets/img/logo.png" />
+  </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="video-content" padding>
+  <div class="scroll-holder">
+    <vg-player (onPlayerReady)="onPlayerReady($event)">
+      <vg-overlay-play></vg-overlay-play>
+      <vg-buffering></vg-buffering>
 
-  <vg-player (onPlayerReady)="onPlayerReady($event)">
-    <vg-overlay-play></vg-overlay-play>
-    <vg-buffering></vg-buffering>
+      <vg-scrub-bar>
+        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+        <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
 
-    <vg-scrub-bar>
-      <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-      <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+        <vg-scrub-bar-cue-points class="cue-point" [vgCuePoints]="metadataTrack.cues"></vg-scrub-bar-cue-points>
 
-      <vg-scrub-bar-cue-points class="cue-point" [vgCuePoints]="metadataTrack.cues"></vg-scrub-bar-cue-points>
+      </vg-scrub-bar>
 
-    </vg-scrub-bar>
+      <vg-controls>
+        <vg-play-pause></vg-play-pause>
+        <vg-playback-button></vg-playback-button>
 
-    <vg-controls>
-      <vg-play-pause></vg-play-pause>
-      <vg-playback-button></vg-playback-button>
+        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
 
-      <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+        <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
 
-      <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+        <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+        <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
 
-      <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
-      <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+        <vg-track-selector></vg-track-selector>
+        <vg-mute></vg-mute>
+        <vg-volume></vg-volume>
 
-      <vg-track-selector></vg-track-selector>
-      <vg-mute></vg-mute>
-      <vg-volume></vg-volume>
+        <vg-fullscreen></vg-fullscreen>
+      </vg-controls>
 
-      <vg-fullscreen></vg-fullscreen>
-    </vg-controls>
+      <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
+        <source src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/videogular.mp4" type="video/mp4">
+        <track kind="subtitles" label="English" src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/pale-blue-dot.vtt"
+          srclang="en" default #metadataTrack vgCuePoints (onEnterCuePoint)="onEnterCuePoint($event)" (onExitCuePoint)="onExitCuePoint($event)">
+        <track kind="subtitles" label="Español" src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/pale-blue-dot-es.vtt"
+          srclang="es">
+      </video>
+    </vg-player>
+  </div>
 
-    <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
-      <source src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/videogular.mp4" type="video/mp4">
-      <track kind="subtitles" label="English" src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/pale-blue-dot.vtt"
-        srclang="en" default #metadataTrack vgCuePoints (onEnterCuePoint)="onEnterCuePoint($event)" (onExitCuePoint)="onExitCuePoint($event)">
-      <track kind="subtitles" label="Español" src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/pale-blue-dot-es.vtt"
-        srclang="es">
-    </video>
-  </vg-player>
+  <div class="slide-indicator">
+    <p>Swipe left for instructions <span>&raquo;</span></p>
+    <p><span>&laquo;</span> Swipe right for recipe</p>
+    <ul class="indicator">
+      <li></li>
+      <li class="active"></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <ion-grid class="bottom-menu">
+    <ion-row>
+      <ion-col>
+        <button ion-button color="dark">Home</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button item-right color="dark">Logout</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 <!-- <vg-player>
