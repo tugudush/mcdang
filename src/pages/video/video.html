@@ -9,48 +9,46 @@
 <ion-content class="video-content" padding>
   <div class="scroll-holder">
     <vg-player (onPlayerReady)="onPlayerReady($event)">
+        <!-- <div *ngIf="cuePointData?.title" class="info-layer">
+            <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3>
+            <p>
+                <img [src]="cuePointData?.src" align="left">
+                {{ cuePointData?.description }}
+            </p>
+        </div> -->
       <vg-overlay-play></vg-overlay-play>
       <vg-buffering></vg-buffering>
-
-      <vg-scrub-bar>
-        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-        <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-
-        <vg-scrub-bar-cue-points class="cue-point" [vgCuePoints]="metadataTrack.cues"></vg-scrub-bar-cue-points>
-
-      </vg-scrub-bar>
 
       <vg-controls>
         <vg-play-pause></vg-play-pause>
         <vg-playback-button></vg-playback-button>
-
-        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-
-        <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-
-        <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
-        <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
-
-        <vg-track-selector></vg-track-selector>
+        <vg-scrub-bar>
+          <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+          <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+          <vg-scrub-bar-cue-points [vgCuePoints]="metadataTrack.cues"></vg-scrub-bar-cue-points>
+        </vg-scrub-bar>
         <vg-mute></vg-mute>
         <vg-volume></vg-volume>
-
-        <vg-fullscreen></vg-fullscreen>
       </vg-controls>
 
       <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
-        <source src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/videogular.mp4" type="video/mp4">
-        <track kind="subtitles" label="English" src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/pale-blue-dot.vtt"
-          srclang="en" default #metadataTrack vgCuePoints (onEnterCuePoint)="onEnterCuePoint($event)" (onExitCuePoint)="onExitCuePoint($event)">
-        <track kind="subtitles" label="Español" src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/pale-blue-dot-es.vtt"
-          srclang="es">
+        <source [src]="video_src.src" [type]="video_src.type">
+        <track src="assets/data/cue-points.vtt" kind="metadata" label="Cue Points" default #metadataTrack vgCuePoints (onEnterCuePoint)="onEnterCuePoint($event)"
+          (onExitCuePoint)="onExitCuePoint($event)">
       </video>
     </vg-player>
   </div>
 
   <div class="slide-indicator">
-    <p>Swipe left for instructions <span>&raquo;</span></p>
-    <p><span>&laquo;</span> Swipe right for recipe</p>
+      <div *ngIf="cuePointData?.title">
+          <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3>
+          <p>
+              <img [src]="cuePointData?.src" align="left">
+              {{ cuePointData?.description }}
+          </p>
+      </div>
+    <!-- <p>Swipe left for instructions <span>&raquo;</span></p>
+    <p><span>&laquo;</span> Swipe right for recipe</p> -->
     <ul class="indicator">
       <li></li>
       <li class="active"></li>
@@ -69,14 +67,3 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
-<!-- <vg-player>
-      <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
-          <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
-      </video>
-  </vg-player> -->
-
-<!-- <source src="http://videogular.com/assets/videos/videogular.mp4" type="video/mp4"> 
-      <track kind="subtitles" label="English" src="http://videogular.com/assets/subs/pale-blue-dot.vtt" srclang="en" 
-        default #metadataTrack vgCuePoints (onEnterCuePoint)="onEnterCuePoint($event)" (onExitCuePoint)="onExitCuePoint($event)">
-      <track kind="subtitles" label="Español" src="http://videogular.com/assets/subs/pale-blue-dot-es.vtt" srclang="es">-->
