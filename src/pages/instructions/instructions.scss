@@ -1,3 +1,57 @@
 page-instructions {
-
+	ion-header.ion-header { 
+        background:none;
+        box-shadow: none;
+        .toolbar {
+            /*padding:80px 40px 50px 30px;*/
+            .toolbar-background {
+                background:none;
+                border:0;
+            }
+            img { 
+                margin: 0 auto;
+                display: block;
+                max-width: 300px;
+                width: 100%;
+                padding-left: 75px;
+                padding-right: 75px;
+                padding-top:20px;
+                padding-bottom: 10px;
+            }
+        }
+        &:after {
+            display: none;
+        }
+    }
+    .instructions-content {
+    	.scroll-holder {
+    		padding-left: 0;
+    		padding-right: 0;
+    		.list {
+    			.item {
+    				.item-inner {
+    					padding:15px 30px;
+    					ion-label {
+    						white-space: normal;
+    						margin:0;
+    					}
+    					h2 {
+							font-family: 'Georgia';
+							font-size: 2.2rem;
+							margin:0 0 7px;
+							color:#111111;
+	    				}
+	    				p {
+	    					color: #acacac;
+	    				}
+    				}
+    				&:first-child {
+    					.item-inner {
+    						border-top:2px solid #dedede;
+    					}
+    				}
+    			}
+    		}
+    	}
+    }
 }

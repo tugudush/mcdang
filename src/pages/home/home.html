@@ -1,13 +1,24 @@
-<ion-header>
+<ion-header class="ion-header">
   <ion-navbar>
     <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
       </button>
-    <ion-title>Mc Dang</ion-title>
+    <img src="assets/img/logo.png" />
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="home list">
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/img/thai-omelet.png">
+      </ion-thumbnail>
+      <h2>Thai Omelette </h2>
+      <p>by Chef Mcdang</p>
+      <button ion-button clear item-end><ion-icon ios="ios-arrow-dropright-outline" md="ios-arrow-dropright"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+
   <br />
   <h4>Demo alpha v0.6</h4>
   <ul>

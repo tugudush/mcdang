@@ -1,13 +1,50 @@
-<ion-header>
+<ion-header class="ion-header">
   <ion-navbar>
-    <ion-title>
-      Instructions
-    </ion-title>
+    <!-- <ion-title>Register</ion-title> -->
+    <img src="assets/img/logo.png" />
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <p>Swipe right to Video page..</p>
-  <br />
-  <p>Todo: Add content for Home Page</p>
+<ion-content class="instructions-content" padding>
+	<div class="scroll-holder">
+	  <ion-list>
+	    <ion-item>
+	      <h2>0:00 - 0:30 - Intro</h2>
+	      <p>In a mixing bowl, mix together, the eggs, Chinese sweet pickle turnip, chilli and fish sauce.</p>
+	    </ion-item>
+	    <ion-item>
+	      <h2>0:30 - 1:30 - Lorem Ipsum</h2>
+	      <p>Heat up the wok on a high heat. Put in oil and wait until smoking hot</p>
+	    </ion-item>
+	    <ion-item>
+	      <h2>1:30 - 2:15 - Lorem Ipsum</h2>
+	      <p>Pure in the egg from high above and keep stirring to make omelette fluff up</p>
+	    </ion-item>
+	    <ion-item>
+	      <h2>2:15 - 3:36 - Lorem Ipsum</h2>
+	      <p>Adding Thai sweet basil and flip in over. Cook it for 30 second or golden and ready to serve on a plate</p>
+	    </ion-item>
+	  </ion-list>
+	</div>
+
+
+	<div class="slide-indicator">
+	    <p><span>&laquo;</span> Swipe right for video</p>
+	    <ul class="indicator">
+	      <li></li>
+	      <li></li>
+	      <li class="active"></li>
+	    </ul>
+	  </div>
+
+	  <ion-grid class="bottom-menu">
+	    <ion-row>
+	      <ion-col>
+	        <button ion-button color="dark">Home</button>
+	      </ion-col>
+	      <ion-col>
+	        <button ion-button item-right color="dark">Logout</button>
+	      </ion-col>
+	    </ion-row>
+	  </ion-grid>
 </ion-content>

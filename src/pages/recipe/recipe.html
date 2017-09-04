@@ -1,29 +1,51 @@
-<ion-header>
+<ion-header class="ion-header">
   <ion-navbar>
-    <ion-title>
-      Recipe
-    </ion-title>
+    <!-- <ion-title>Register</ion-title> -->
+    <img src="assets/img/logo.png" />
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ingredients</h3>
-  <ul>
-    <li>½ cup Coconut Milk</li>
-    <li>6 oz Sour Pork, broken up </li> .
-    <li>2 Tbsp. Shallots, peeled and sliced thin </li>
-    <li>½ each Thai red and green large chili peppers, sliced</li>
-    <li>1-2 Tsp. Palm Sugar </li>
-    <li>1-2 Tbsp. Tamarind pulp juice </li>
-    <li>1-2 Tbsp. Fish Sauce </li>
-    <li>Cilantro leaves, picked for garnish</li>
-  </ul>
+<ion-content class="recipes-content" padding>
+  <div class="scroll-holder">
+    <h1>Fried fish, garlic, pepper</h1>
+    <ion-img class="recipe-image" src="assets/img/thai-omelet.png"></ion-img>
+    <h3>Ingredients</h3>
+    <ul>
+      <li>½ cup Coconut Milk</li>
+      <li>6 oz Sour Pork, broken up </li> .
+      <li>2 Tbsp. Shallots, peeled and sliced thin </li>
+      <li>½ each Thai red and green large chili peppers, sliced</li>
+      <li>1-2 Tsp. Palm Sugar </li>
+      <li>1-2 Tbsp. Tamarind pulp juice </li>
+      <li>1-2 Tbsp. Fish Sauce </li>
+      <li>Cilantro leaves, picked for garnish</li>
+    </ul>
 
-  <h3>Tools</h3>
-  <p>This dip is served with fresh or blanched vegetables, 
-    such as Thai eggplant, cucumber, Thai wing beans, 
-    green onion or cabbage leaves.</p>
+    <h3>Tools</h3>
+    <p>This dip is served with fresh or blanched vegetables, 
+      such as Thai eggplant, cucumber, Thai wing beans, 
+      green onion or cabbage leaves.</p>
 
 
-  <p>Swipe left to video page &gt; &gt; &gt;</p>
+    <p>Swipe left to video page &gt; &gt; &gt;</p>
+  </div>
+  <div class="slide-indicator">
+    <p>Swipe left for video <span>&raquo;</span></p>
+    <ul class="indicator">
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <ion-grid class="bottom-menu">
+    <ion-row>
+      <ion-col>
+        <button ion-button color="dark">Home</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button item-right color="dark">Logout</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

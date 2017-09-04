@@ -93,6 +93,43 @@ page-video {
     align-items: center;
     justify-content: center;
 }
+    ion-header.ion-header { 
+        background:none;
+        box-shadow: none;
+        .toolbar {
+            /*padding:80px 40px 50px 30px;*/
+            .toolbar-background {
+                background:none;
+                border:0;
+            }
+            img { 
+                margin: 0 auto;
+                display: block;
+                max-width: 300px;
+                width: 100%;
+                padding-left: 75px;
+                padding-right: 75px;
+                padding-top:20px;
+                padding-bottom: 10px;
+            }
+        }
+        &:after {
+            display: none;
+        }
+    }
+    .video-content {
+        .scroll-holder {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .slide-indicator {
+            &:before {
+                display:none;
+            }
+        }
+    }
+
+
     //   vg-scrub-bar-cue-points.cue-point {
     //     background-color: aqua !important;
     // }
