@@ -29,5 +29,4 @@ export class LoginPage {
     // and the tabs as well as display the HomePage.
 	this.navCtrl.push(TabsPage);  
   }
-
 }
