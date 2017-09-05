@@ -20,7 +20,8 @@ export class RecipeProvider {
       recipe: {
         id: "0",
         name: "Thai Omelette",
-        video_url: "..",
+        video_url: "https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/Thai_Omelette.mp4",
+        video_type: "video/mp4",
         image_url: "..",
         vtt: null,
         ingredients: [{
@@ -55,26 +56,39 @@ export class RecipeProvider {
           extra_info: ""
         }],
         instructions: [{
-          timecode_start: "10.00",
-          timecode_stop: "30:00",
+          title: "Chef McDang - Thai Chef",
+          timecode_start: "0",
+          timecode_stop: "45",
+          info: "Preparation for TV shooting in Korat."
+        }, {
+          title: "Thai Omelette",
+          timecode_start: "47",
+          timecode_stop: "74",
+          info: "Recipe introduction."
+        }, {
+          title: "Mix Ingredients",
+          timecode_start: "76",
+          timecode_stop: "143",
           info: "In a mixing bowl, mix together, the eggs, Chinese sweet pickle turnip, chilli and fish sauce."
-        },{
-          timecode_start: "40.00",
-          timecode_stop: "60:00",
+        }, {
+          title: "Heat up wok",
+          timecode_start: "145",
+          timecode_stop: "228",
           info: "Heat up the wok on a high heat. Put in the oil and wait until smoking hot."
-        },{
-          timecode_start: "70.00",
-          timecode_stop: "90:00",
+        }, {
+          title: "Stir Ingredients",
+          timecode_start: "230",
+          timecode_stop: "246",
           info: "Pour in the egg from high above and keep stirring to make omelette fluff up."
-        },{
-          timecode_start: "100.00",
-          timecode_stop: "120:00",
+        }, {
+          title:"Cook",
+          timecode_start: "248",
+          timecode_stop: "335",
           info: "Add Thai sweet basil and flip over. Cook for about 30 seconds or golden brown. Serve immediately. "
-        }]
-  }
-
-
-}
-
+        }],
+        summary: "This dip is served with fresh or blanched vegetables, such as Thai eggplant, cucumber, Thai wing beans, green onion or cabbage leaves."
+      }
+    }
+    return rec_json;
   }
 }

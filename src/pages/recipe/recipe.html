@@ -16,27 +16,15 @@
      </ion-row>
     </ion-grid>
     <h3>Ingredients</h3>
-    <ul>
-      <li>½ cup Coconut Milk</li>
-      <li>6 oz Sour Pork, broken up </li> .
-      <li>2 Tbsp. Shallots, peeled and sliced thin </li>
-      <li>½ each Thai red and green large chili peppers, sliced</li>
-      <li>1-2 Tsp. Palm Sugar </li>
-      <li>1-2 Tbsp. Tamarind pulp juice </li>
-      <li>1-2 Tbsp. Fish Sauce </li>
-      <li>Cilantro leaves, picked for garnish</li>
+    <ul *ngFor="let ingredient of recipe_data.recipe.ingredients">
+      <li>{{ ingredient.amount }} {{ ingredient.unit}} {{ingredient.name}}</li>
     </ul>
-
-    <h3>Tools</h3>
-    <p>This dip is served with fresh or blanched vegetables, 
-      such as Thai eggplant, cucumber, Thai wing beans, 
-      green onion or cabbage leaves.</p>
-
-
-    <p>Swipe left to video page &gt; &gt; &gt;</p>
+    <h3>Description</h3>
+    <p>{{ recipe_data.recipe.summary }}</p>
+    <!-- <p>Swipe left to video page &gt; &gt; &gt;</p> -->
   </div>
   <div class="slide-indicator">
-    <p>Swipe left for video <span>&raquo;</span></p>
+    <!-- <p>Swipe left for video <span>&raquo;</span></p> -->
     <ul class="indicator">
       <li class="active"></li>
       <li></li>

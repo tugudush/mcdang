@@ -32,7 +32,7 @@
       </vg-controls>
 
       <video [vgMedia]="media" #media id="singleVideo" preload="auto" crossorigin>
-        <source [src]="video_src.src" [type]="video_src.type">
+        <source [src]="recipe_data.recipe.video_url" [type]="recipe_data.recipe.video_type">
         <track src="assets/data/cue-points.vtt" kind="metadata" label="Cue Points" default #metadataTrack vgCuePoints (onEnterCuePoint)="onEnterCuePoint($event)"
           (onExitCuePoint)="onExitCuePoint($event)">
       </video>

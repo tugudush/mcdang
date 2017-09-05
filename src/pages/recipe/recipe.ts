@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RecipeProvider } from '../../providers/recipe/recipe';
 
 @IonicPage()
 @Component({
@@ -7,8 +8,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'recipe.html',
 })
 export class RecipePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  recipe_data: any;
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public recipeProvider: RecipeProvider) {
+      this.recipe_data = this.recipeProvider.getRecipe_json();
   }
 
   ionViewDidLoad() {
