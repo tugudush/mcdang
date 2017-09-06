@@ -122,6 +122,16 @@ page-video {
         .scroll-holder {
             padding-left: 0;
             padding-right: 0;
+            h1 {
+                font-family: 'Georgia';
+                font-size: 2.2rem;
+                margin:0;
+                color:#111111;
+                padding:0 20px 10px;
+            }
+            vg-player {
+                height: 80%;
+            }
         }
         .slide-indicator {
             &:before {

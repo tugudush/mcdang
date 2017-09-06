@@ -1,0 +1,39 @@
+<ion-header class="ion-header">
+  <ion-navbar>
+    <!-- <ion-title>Register</ion-title> -->
+    <img src="assets/img/logo.png" />
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="search-content" padding>
+  <div class="scroll-holder">
+    <h1 class="heading">Need ingredients?</h1>
+    <ion-searchbar
+		  [(ngModel)]="myInput"
+		  [showCancelButton]="shouldShowCancel"
+		  (ionInput)="onInput($event)"
+		  (ionCancel)="onCancel($event)">
+		</ion-searchbar>
+		<h3>Results:</h3>
+    <ion-list>
+			<ion-item>
+				<h2>Lorem Ipsum</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+				<p class="url">www. consectetur.com</p>
+				<button ion-button clear item-end><ion-icon name="open"></ion-icon></button>
+			</ion-item>
+			<ion-item>
+				<h2>Lorem Ipsum</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+				<p class="url">www. consectetur.com</p>
+				<button ion-button clear item-end><ion-icon name="open"></ion-icon></button>
+			</ion-item>
+			<ion-item>
+				<h2>Lorem Ipsum</h2>
+				<p>Lorem ipsum dolor sit amet</p>
+				<p class="url">www. consectetur.com</p>
+				<button ion-button clear item-end><ion-icon name="open"></ion-icon></button>
+			</ion-item>
+	 </ion-list>
+  </div>
+</ion-content>

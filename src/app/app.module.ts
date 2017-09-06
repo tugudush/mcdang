@@ -13,6 +13,7 @@ import { VideoPage } from '../pages/video/video';
 import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
 import { RegisterEmailPage } from '../pages/register-email/register-email';
+import { SearchPage } from '../pages/search/search';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -42,7 +43,8 @@ import { RecipeProvider } from '../providers/recipe/recipe';
     AdminPage,
     RegisterPage,
     LoginPage,
-    RegisterEmailPage
+    RegisterEmailPage,
+    SearchPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { RecipeProvider } from '../providers/recipe/recipe';
     AdminPage,
     RegisterPage,
     LoginPage,
-    RegisterEmailPage
+    RegisterEmailPage,
+    SearchPage
   ],
   providers: [
     StatusBar,

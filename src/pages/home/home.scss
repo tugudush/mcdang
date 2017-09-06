@@ -26,26 +26,46 @@ page-home {
 	ion-content.home[padding] {
 		.scroll-content {
 			padding:0;
-			.item-block {
-				padding:10px;
-				border-top:2px dashed #aaaaaa;
-				ion-thumbnail {
-					border-radius: 50%;
-					width: 80px;
-					height: 80px;
-					margin-top: 0;
-					margin-bottom: 0;
-					overflow: hidden;
-					border:1px solid #dddddd;
-				}
-				.item-inner {
-					border:0;					
-					.item-button {
-						height: 35px;
-						line-height: 35px;
-						ion-icon {
-							font-size: 3.2em;
-							color: #aaaaaa;							
+			.list {
+				border-top:1px solid #aaaaaa;
+				.item-block {
+					padding:15px 10px;
+					border-top:1px solid #aaaaaa;
+					ion-thumbnail {
+						border-radius: 50%;
+						width: 60px;
+						height: 60px;
+						min-width: 60px;
+						min-height: 60px;
+						margin-top: 0;
+						margin-bottom: 0;
+						overflow: hidden;
+						border:1px solid #111111;
+						img {
+							width:60px;
+							height: 60px;
+						}
+					}
+					.item-inner {
+						border:0;
+						ion-label {
+							margin-top:0;
+							h2 {
+								font-family: "Georgia";
+								font-weight: bold;
+							}	
+							p {
+								color:#acacac;
+							}
+						}				
+						
+						.item-button {
+							height: 35px;
+							line-height: 35px;
+							ion-icon {
+								font-size: 3.2em;
+								color: #aaaaaa;							
+							}
 						}
 					}
 				}
