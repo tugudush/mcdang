@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { UtilProvider } from '../../providers/util/util';
 import { RecipeProvider } from '../../providers/recipe/recipe';
 import { VgAPI } from 'videogular2/core';
+// enables calling another component using events
+import { Events } from 'ionic-angular';
 
 // ref: https://github.com/videogular/videogular2/tree/master/docs
 // ref: https://www.youtube.com/embed/-wXfJvb9Ae0
@@ -39,15 +41,22 @@ export class VideoPage {
   showCuePointManager = false;
   json: JSON = JSON;
   is_init: boolean = true;
-
   public recipe_data: any;
+  public is_event: boolean = false; // indicate that event has been fired
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
     public util: UtilProvider,
-    public recipeProvider: RecipeProvider) {
+    public recipeProvider: RecipeProvider, 
+    public events: Events) {
     console.log("VideoPage.constructor()");
+    // subscribe to event called from Instructions page 
+    // to reset the video
+    events.subscribe('instruction', (instruction: any) => {
+      this.setVideo(instruction);
+    });
+
     this.recipe_data = this.recipeProvider.getRecipe_json();
 
     this.viewCtrl.didLeave.subscribe(
@@ -60,27 +69,19 @@ export class VideoPage {
           console.log("ERROR: videogular api was not ready!")
         }
       });
+
     this.viewCtrl.didEnter.subscribe(
       () => {
         console.log("VideoPage -> didEnter event received..");
         // get data if instruction has been clicked in InstructionsPage
-        let instruction = navParams.get('instruction');
-        if (instruction != null) {
-          console.log("received instruction " + instruction.title);
-          this.is_init = false;
-          this.api.pause();
-          this.createCueData();
-          this.api.getDefaultMedia().currentTime = instruction.timecode_start;
-          this.api.play();
-        }
-        else {
+        //let instruction = navParams.get('instruction');
+        //console.log("event=" + this.is_event);
           if (this.is_init) {
             console.log(" -> Preload by supertabs .. Ignore!");
             this.is_init = false;
           }
           else {
-            if (this.api != null) {
-              //this.api.getDefaultMedia().currentTime = 50;
+            if (this.api != null) { //} && this.is_event == false) {
               this.createCueData();
               this.api.play();
             }
@@ -88,8 +89,21 @@ export class VideoPage {
               console.log("ERROR: videogular api was not ready!")
             }
           }
-        }
       });
+  }
+
+  public setVideo(instruction: any){
+    console.log("setVideo()");
+    //this.is_event = true;
+    if (instruction != null) {
+      console.log("received instruction " + instruction.title);
+      this.is_init = false;
+      //this.api.pause();
+      //this.createCueData();
+      this.api.getDefaultMedia().currentTime = instruction.timecode_start;
+      this.api.play();
+      //this.is_event = false;
+    }
   }
 
 
