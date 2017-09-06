@@ -45,7 +45,7 @@ export class VideoPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public util: UtilProvider, 
+    public util: UtilProvider,
     public recipeProvider: RecipeProvider) {
     console.log("VideoPage.constructor()");
     this.recipe_data = this.recipeProvider.getRecipe_json();
@@ -63,22 +63,35 @@ export class VideoPage {
     this.viewCtrl.didEnter.subscribe(
       () => {
         console.log("VideoPage -> didEnter event received..");
-        if (this.is_init) {
-          console.log(" -> Preload by supertabs .. Ignore!");
+        // get data if instruction has been clicked in InstructionsPage
+        let instruction = navParams.get('instruction');
+        if (instruction != null) {
+          console.log("received instruction " + instruction.title);
           this.is_init = false;
+          this.api.pause();
+          this.createCueData();
+          this.api.getDefaultMedia().currentTime = instruction.timecode_start;
+          this.api.play();
         }
         else {
-          if (this.api != null) {
-            //this.api.getDefaultMedia().currentTime = 50;
-            this.createCueData();
-            this.api.play();
+          if (this.is_init) {
+            console.log(" -> Preload by supertabs .. Ignore!");
+            this.is_init = false;
           }
           else {
-            console.log("ERROR: videogular api was not ready!")
+            if (this.api != null) {
+              //this.api.getDefaultMedia().currentTime = 50;
+              this.createCueData();
+              this.api.play();
+            }
+            else {
+              console.log("ERROR: videogular api was not ready!")
+            }
           }
         }
       });
   }
+
 
   public handleVideo() {
     console.log("VideoPage.handleVideo()");
@@ -148,14 +161,14 @@ export class VideoPage {
 
   }
 
-  onScrubBarTouchMove($event){
+  onScrubBarTouchMove($event) {
     console.log("-> touched control...");
   }
 
   createCueData() {
     console.log("createCueData()");
-    for(let instruction of this.recipe_data.recipe.instructions){
-      var jsonData = { title: instruction['title'], description: instruction['info']};
+    for (let instruction of this.recipe_data.recipe.instructions) {
+      var jsonData = { title: instruction['title'], description: instruction['info'] };
       //console.log("title: item['title']")
       var jsonTxt = JSON.stringify(jsonData);
       this.track.addCue(new VTTCue(parseFloat(instruction['timecode_start']), parseFloat(instruction['timecode_stop']), jsonTxt));

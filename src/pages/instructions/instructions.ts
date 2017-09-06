@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RecipeProvider } from '../../providers/recipe/recipe';
+import { VideoPage } from '../video/video';
 
 @IonicPage()
 @Component({
@@ -18,6 +19,14 @@ export class InstructionsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InstructionsPage');
+  }
+
+
+  handleInstructionClick(instruction: any){
+    console.log("instruction " + instruction.title);
+    this.navCtrl.setRoot(VideoPage, {
+      instruction: instruction
+    });
   }
 
 }
