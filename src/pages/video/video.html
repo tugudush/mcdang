@@ -42,9 +42,10 @@
 
   <div class="slide-indicator">
       <div *ngIf="cuePointData?.title">
-          <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3>
+          <!-- <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3> -->
+          <h3>{{ cuePointData?.title }}</h3>
           <p>
-              <img [src]="cuePointData?.src" align="left">
+              <!-- <img [src]="cuePointData?.src" align="left"> -->
               {{ cuePointData?.description }}
           </p>
       </div>

@@ -56,10 +56,10 @@ export class RecipeProvider {
           extra_info: ""
         }],
         instructions: [{
-          title: "Chef McDang - Thai Chef",
-          timecode_start: "0",
+          title: "Chef McDang",
+          timecode_start: "1",
           timecode_stop: "45",
-          info: "Preparation for TV shooting in Korat."
+          info: "Preparation"
         }, {
           title: "Thai Omelette",
           timecode_start: "47",

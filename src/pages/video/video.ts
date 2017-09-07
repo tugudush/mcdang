@@ -43,18 +43,22 @@ export class VideoPage {
   is_init: boolean = true;
   public recipe_data: any;
   public is_event: boolean = false; // indicate that event has been fired
+  public curr_instruction: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
     public util: UtilProvider,
-    public recipeProvider: RecipeProvider, 
+    public recipeProvider: RecipeProvider,
     public events: Events) {
     console.log("VideoPage.constructor()");
     // subscribe to event called from Instructions page 
     // to reset the video
     events.subscribe('instruction', (instruction: any) => {
-      this.setVideo(instruction);
+      console.log("Instruction received from InstructionsPage");
+      this.curr_instruction = instruction;
+      this.setVideo();
+      //this.setVideo(instruction);
     });
 
     this.recipe_data = this.recipeProvider.getRecipe_json();
@@ -76,36 +80,55 @@ export class VideoPage {
         // get data if instruction has been clicked in InstructionsPage
         //let instruction = navParams.get('instruction');
         //console.log("event=" + this.is_event);
-          if (this.is_init) {
-            console.log(" -> Preload by supertabs .. Ignore!");
-            this.is_init = false;
+        if (!this.is_init) {
+          console.log(" -> is_init is false");
+          if (this.api != null) { //} && this.is_event == false) {
+            this.setVideo();
           }
           else {
-            if (this.api != null) { //} && this.is_event == false) {
-              this.createCueData();
-              this.api.play();
-            }
-            else {
-              console.log("ERROR: videogular api was not ready!")
-            }
+            console.log("ERROR: videogular api was not ready!")
           }
+
+        } else {
+          console.log(" -> Preload by supertabs .. Ignore!");
+          this.is_init = false;
+        }
       });
   }
 
-  public setVideo(instruction: any){
+  public setVideo() {
     console.log("setVideo()");
     //this.is_event = true;
-    if (instruction != null) {
-      console.log("received instruction " + instruction.title);
+    if (this.curr_instruction != null) {
+      console.log("received instruction " + this.curr_instruction.title);
       this.is_init = false;
       //this.api.pause();
       //this.createCueData();
-      this.api.getDefaultMedia().currentTime = instruction.timecode_start;
+      this.api.getDefaultMedia().currentTime = this.curr_instruction.timecode_start;
       this.api.play();
+      this.curr_instruction = null;
       //this.is_event = false;
+    }
+    else{
+      console.log(" -> No instruction allocated");
+      //this.createCueData();
+      this.api.play();
     }
   }
 
+  // public setVideo(instruction: any) {
+  //   console.log("setVideo()");
+  //   //this.is_event = true;
+  //   if (instruction != null) {
+  //     console.log("received instruction " + instruction.title);
+  //     this.is_init = false;
+  //     //this.api.pause();
+  //     //this.createCueData();
+  //     this.api.getDefaultMedia().currentTime = instruction.timecode_start;
+  //     this.api.play();
+  //     //this.is_event = false;
+  //   }
+  // }
 
   public handleVideo() {
     console.log("VideoPage.handleVideo()");
@@ -139,12 +162,13 @@ export class VideoPage {
     //this.api.
     this.api.getDefaultMedia().subscriptions.canPlay.subscribe(
       () => {
-        //console.log(" -> media can play");
+        console.log(" -> media can play");
+        this.createCueData();
       });
     this.api.getDefaultMedia().subscriptions.ended.subscribe(
       () => {
-        //console.log(".. Set the video to the beginning");
-        this.api.getDefaultMedia().currentTime = 0;
+        console.log(".. Set the video to the beginning");
+        //this.api.getDefaultMedia().currentTime = 0;
       }
     );
   }

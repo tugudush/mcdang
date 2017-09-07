@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RecipeProvider } from '../../providers/recipe/recipe';
-import { VideoPage } from '../video/video';
+//import { VideoPage } from '../video/video';
 import { SuperTabsController } from 'ionic2-super-tabs';
 import { Events } from 'ionic-angular';
 
