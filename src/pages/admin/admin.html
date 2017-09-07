@@ -13,9 +13,13 @@
 
 <ion-content padding>
   <p> Todo: Content for Admin page</p>
-  <ion-buttons>
-    <button ion-button clear color="primary" (click)="goToRecipePage()">Go to Recipe Page</button>
-    <button ion-button clear color="primary" (click)="goToVideoPage()">Go to Video Page</button>
-    <button ion-button clear color="primary" (click)="goToInstructionsPage()">Go to Instructions Page</button>
-  </ion-buttons>
+  <ion-grid>
+    <ion-row><ion-col><button ion-button clear color="primary" (click)="goToRecipePage()">Go to Recipe Page</button></ion-col></ion-row>
+    <ion-row><ion-col><button ion-button clear color="primary" (click)="goToVideoPage()">Go to Video Page</button></ion-col></ion-row>
+    <ion-row><ion-col><button ion-button clear color="primary" (click)="goToInstructionsPage()">Go to Instructions Page</button></ion-col></ion-row>
+  </ion-grid>
+    
+    
+    
+
 </ion-content>
