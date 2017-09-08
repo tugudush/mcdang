@@ -114,7 +114,7 @@ export class VideoPage {
       //this.createCueData();
       this.api.getDefaultMedia().currentTime = this.curr_instruction.timecode_start;
       this.api.play();
-      //this.curr_instruction = null;
+      this.curr_instruction = null;
       //this.is_event = false;
     }
     else{
