@@ -19,5 +19,4 @@ export class AboutPage {
   returnHome(){
     this.navCtrl.setRoot(TabsPage);
   }
-
 }

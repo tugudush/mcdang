@@ -8,9 +8,18 @@
 
 <ion-content class="video-content" padding>
   <div class="scroll-holder">
-    <h1 class="heading">Thai Omelette</h1>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-9>
+          <h1 class="heading">{{ recipe_data.recipe.name }}</h1>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button clear color="primary" (click)="restartVideo()">Restart</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <vg-player (onPlayerReady)="onPlayerReady($event)">
-        <!-- <div *ngIf="cuePointData?.title" class="info-layer">
+      <!-- <div *ngIf="cuePointData?.title" class="info-layer">
             <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3>
             <p>
                 <img [src]="cuePointData?.src" align="left">
@@ -41,14 +50,16 @@
   </div>
 
   <div class="slide-indicator">
-      <div *ngIf="cuePointData?.title">
-          <!-- <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3> -->
-          <h3>{{ cuePointData?.title }}</h3>
-          <p>
-              <!-- <img [src]="cuePointData?.src" align="left"> -->
-              {{ cuePointData?.description }}
-          </p>
-      </div>
+    <div *ngIf="cuePointData?.title">
+      <!-- <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3> -->
+      <h3>{{ cuePointData?.title }}</h3>
+      <!-- <ion-scroll scrollY="true"> -->
+        <p>
+          <!-- <img [src]="cuePointData?.src" align="left"> -->
+          {{ cuePointData?.description }}
+        </p>
+      <!-- </ion-scroll> -->
+    </div>
     <!-- <p>Swipe left for instructions <span>&raquo;</span></p>
     <p><span>&laquo;</span> Swipe right for recipe</p> -->
     <ul class="indicator">

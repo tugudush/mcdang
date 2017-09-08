@@ -6,13 +6,14 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AboutPage } from '../pages/about/about';
 import { AdminPage } from '../pages/admin/admin';
 import { RegisterPage } from '../pages/register/register';
+import { InstructionsPage } from '../pages/instructions/instructions';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = RegisterPage; //RegisterPage;  //TabsPage;
+  rootPage:any = TabsPage;//RegisterPage; //RegisterPage;  //TabsPage;
   public pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(

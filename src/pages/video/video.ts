@@ -44,6 +44,7 @@ export class VideoPage {
   public recipe_data: any;
   public is_event: boolean = false; // indicate that event has been fired
   public curr_instruction: any;
+  public curr_instruction_index: number;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -57,21 +58,25 @@ export class VideoPage {
     events.subscribe('instruction', (instruction: any) => {
       console.log("Instruction received from InstructionsPage");
       this.curr_instruction = instruction;
+      this.curr_instruction_index = instruction.sequence;
       this.setVideo();
       //this.setVideo(instruction);
     });
 
     this.recipe_data = this.recipeProvider.getRecipe_json();
-
+    
     this.viewCtrl.didLeave.subscribe(
       () => {
         console.log("VideoPage -> didLeave event received..");
         if (!this.is_init && this.api != null) {
+         
           this.api.pause();
         }
         else {
           console.log("ERROR: videogular api was not ready!")
         }
+        console.log("publishing instruction_for_highlight event");
+        this.events.publish('instruction_for_highlight', this.curr_instruction_index);
       });
 
     this.viewCtrl.didEnter.subscribe(
@@ -92,6 +97,7 @@ export class VideoPage {
         } else {
           console.log(" -> Preload by supertabs .. Ignore!");
           this.is_init = false;
+          this.curr_instruction_index = 0;  // start condition
         }
       });
   }
@@ -114,6 +120,11 @@ export class VideoPage {
       //this.createCueData();
       this.api.play();
     }
+  }
+
+  restartVideo(){
+    this.api.getDefaultMedia().currentTime = 0;
+    this.api.play();
   }
 
   // public setVideo(instruction: any) {
@@ -168,7 +179,6 @@ export class VideoPage {
     this.api.getDefaultMedia().subscriptions.ended.subscribe(
       () => {
         console.log(".. Set the video to the beginning");
-        //this.api.getDefaultMedia().currentTime = 0;
       }
     );
   }

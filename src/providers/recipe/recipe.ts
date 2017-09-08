@@ -57,31 +57,37 @@ export class RecipeProvider {
         }],
         instructions: [{
           title: "Chef McDang",
+          sequence: "0",
           timecode_start: "1",
           timecode_stop: "45",
           info: "Preparation"
         }, {
           title: "Thai Omelette",
+          sequence: "1",
           timecode_start: "47",
           timecode_stop: "74",
           info: "Recipe introduction."
         }, {
           title: "Mix Ingredients",
+          sequence: "2",
           timecode_start: "76",
           timecode_stop: "143",
           info: "In a mixing bowl, mix together, the eggs, Chinese sweet pickle turnip, chilli and fish sauce."
         }, {
           title: "Heat up wok",
+          sequence: "3",
           timecode_start: "145",
           timecode_stop: "228",
           info: "Heat up the wok on a high heat. Put in the oil and wait until smoking hot."
         }, {
           title: "Stir Ingredients",
+          sequence: "4",
           timecode_start: "230",
           timecode_stop: "246",
           info: "Pour in the egg from high above and keep stirring to make omelette fluff up."
         }, {
           title:"Cook",
+          sequence: "5",
           timecode_start: "248",
           timecode_stop: "335",
           info: "Add Thai sweet basil and flip over. Cook for about 30 seconds or golden brown. Serve immediately. "
