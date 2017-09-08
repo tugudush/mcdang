@@ -6,14 +6,6 @@
 </ion-header>
 
 <ion-content class="instructions-content" padding>
-	<div class="slide-indicator-top">
-	    <!-- <p>Swipe left for video <span>&raquo;</span></p> -->
-	    <ul class="indicator">
-	      <li></li>
-	      <li></li>
-	      <li class="active"></li>
-	    </ul>
-	</div>
 	<div class="scroll-holder">
 		<ion-list *ngFor="let instruction of recipe_data.recipe.instructions">
 			<ion-item #myitem (click)="handleInstructionClick(instruction)">
@@ -35,11 +27,11 @@
 		</ion-list>
 	</div>
 
-	<!-- <div class="slide-indicator">
+	<div class="slide-indicator">
 		<ul class="indicator">
 			<li></li>
 			<li></li>
 			<li class="active"></li>
 		</ul>
-	</div> -->
+	</div>
 </ion-content>
