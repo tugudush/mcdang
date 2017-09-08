@@ -42,6 +42,8 @@
 	background: #ffffff;
 	z-index: 200;
 	p {
+		max-height: 30px;
+		overflow: auto;
 		display: block;
 		margin:0;
 		font-size: 1.4rem;
