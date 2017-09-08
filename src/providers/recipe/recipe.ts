@@ -15,6 +15,22 @@ export class RecipeProvider {
     console.log('RecipeProvider');
   }
 
+  // gets track time and determines what instruction sequence 
+  // it occurs in
+  getSequence(curr_time: number){
+    console.log("RecipeProvider.getSequence()")
+    let jsonObject: any = this.getRecipe_json();
+    let ret_seq = 0;
+    for(let instruction of jsonObject.recipe.instructions){
+      if(curr_time > parseFloat(instruction.timecode_start)){
+        ret_seq = instruction.sequence;
+      }
+    }
+    console.log("sequence = " + ret_seq);
+    return ret_seq;
+  }
+
+
   getRecipe_json() {
     let rec_json: any = {
       recipe: {
@@ -78,7 +94,9 @@ export class RecipeProvider {
           sequence: "3",
           timecode_start: "145",
           timecode_stop: "228",
-          info: "Heat up the wok on a high heat. Put in the oil and wait until smoking hot."
+          info: "Heat up the wok on a high heat. Put in the oil and wait until smoking hot. Testing scrolling ... "
+          + "Testing scrolling ... Testing scrolling ... Testing scrolling ... Testing scrolling ... Testing scrolling ... Testing scrolling ... " 
+          + "Testing scrolling ... Testing scrolling ... Testing scrolling ... Testing scrolling ... Testing scrolling ... Testing scrolling ... "
         }, {
           title: "Stir Ingredients",
           sequence: "4",

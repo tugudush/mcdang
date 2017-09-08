@@ -45,6 +45,7 @@ export class VideoPage {
   public is_event: boolean = false; // indicate that event has been fired
   public curr_instruction: any;
   public curr_instruction_index: number;
+  public curr_time: number = 0;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -77,6 +78,7 @@ export class VideoPage {
         }
         console.log("publishing instruction_for_highlight event");
         this.events.publish('instruction_for_highlight', this.curr_instruction_index);
+        //this.events.publish('instruction_for_highlight', this.curr_instruction.sequence);
       });
 
     this.viewCtrl.didEnter.subscribe(
@@ -112,7 +114,7 @@ export class VideoPage {
       //this.createCueData();
       this.api.getDefaultMedia().currentTime = this.curr_instruction.timecode_start;
       this.api.play();
-      this.curr_instruction = null;
+      //this.curr_instruction = null;
       //this.is_event = false;
     }
     else{
@@ -197,9 +199,14 @@ export class VideoPage {
 
   // triggered when player time is bigger than 'start' cue point property
   onEnterCuePoint($event) {
-    //console.log(JSON.stringify($event.text));
-
+    console.log("VideoPage.onEnterCuePoint()");
+   // console.log(" -> Event.text data: " + JSON.stringify($event.text));
     this.cuePointData = JSON.parse($event.text);
+    // need to determine sequence number of instruction here
+    this.curr_time = this.api.getDefaultMedia().currentTime;
+    //TODO: calculate which instruction we are in
+    this.curr_instruction_index = this.recipeProvider.getSequence(this.curr_time);
+    //console.log(" -> curr_time = " + this.curr_time);
   }
 
   // triggered when player time moves to a position lower than cue point 'start' property
@@ -221,72 +228,6 @@ export class VideoPage {
       var jsonTxt = JSON.stringify(jsonData);
       this.track.addCue(new VTTCue(parseFloat(instruction['timecode_start']), parseFloat(instruction['timecode_stop']), jsonTxt));
     }
-
-    // const jsonData1 = {
-    //   title: "Chef McDang - Thai Chef",
-    //   description: "Preparation for TV shooting in Korat.",
-    //   src: "",
-    //   href: ""
-    // };
-    // const jsonText1 = JSON.stringify(jsonData1);
-    // this.track.addCue(
-    //   new VTTCue(0, 45, jsonText1)
-    // );
-
-    // const jsonData2 = {
-    //   title: "Thai Omelette",
-    //   description: "Recipe introduction",
-    //   src: "",
-    //   href: ""
-    // };
-    // const jsonText2 = JSON.stringify(jsonData2);
-    // this.track.addCue(
-    //   new VTTCue(47 , 74, jsonText2)
-    // );
-
-    // const jsonData3 = {
-    //   title: "Mix ingredients",
-    //   description: "In a mixing bowl, mix together, the eggs, Chinese sweet pickle turnip, chilli and fish sauce.",
-    //   src: "",
-    //   href: ""
-    // };
-    // const jsonText3 = JSON.stringify(jsonData3);
-    // this.track.addCue(
-    //   new VTTCue(76, 143, jsonText3)
-    // );
-
-    // const jsonData4 = {
-    //   title: "Heat up wok",
-    //   description: "Heat up the wok on a high heat. Put in oil and wait until smoking hot",
-    //   src: "",
-    //   href: ""
-    // };  // 2:25
-    // const jsonText4 = JSON.stringify(jsonData4);
-    // this.track.addCue(
-    //   new VTTCue(145, 228, jsonText4)
-    // );
-
-    // const jsonData5 = {
-    //   title: "Stir Ingredients",
-    //   description: "Pour in the egg from high above and keep stirring to make omelette fluff up",
-    //   src: "",
-    //   href: ""
-    // };
-    // const jsonText5 = JSON.stringify(jsonData5);
-    // this.track.addCue(  // 3:50
-    //   new VTTCue(230, 246, jsonText5)
-    // );
-
-    // const jsonData6 = {
-    //   title: "Cook",
-    //   description: "Adding Thai sweet basil and flip in over. Cook it for 30 second or golden and ready to serve on a plate",
-    //   src: "",
-    //   href: ""
-    // };
-    // const jsonText6 = JSON.stringify(jsonData6);
-    // this.track.addCue(//4:08 to 5:35
-    //   new VTTCue(248, 335, jsonText6)
-    // );
   }
 }
 

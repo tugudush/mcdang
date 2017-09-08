@@ -1,4 +1,4 @@
-import { Component, ViewChildren, QueryList, ElementRef, Renderer } from '@angular/core';
+import { Component, ViewChildren, QueryList, Renderer } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, Item } from 'ionic-angular';
 import { RecipeProvider } from '../../providers/recipe/recipe';
 //import { VideoPage } from '../video/video';
