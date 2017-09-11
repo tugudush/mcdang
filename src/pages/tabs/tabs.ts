@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RecipePage } from '../recipe/recipe';
-import { InstructionsPage } from '../instructions/instructions';
-import { HomePage } from '../home/home';
-import { VideoPage } from '../video/video';
+//import { RecipePage } from '../recipe/recipe';
+//import { InstructionsPage } from '../instructions/instructions';
+//import { HomePage } from '../home/home';
+//import { VideoPage } from '../video/video';
 import { IonicPage} from 'ionic-angular';
 // ref: https://github.com/zyra/ionic2-super-tabs#installation
 // ref: https://www.joshmorony.com/adding-swipeable-tabs-to-an-ionic-application/
@@ -14,10 +14,10 @@ import { SuperTabsController } from 'ionic2-super-tabs';
 })
 export class TabsPage {
 
-  tab1Root: any = HomePage;
-  tab2Root: any = RecipePage;
-  tab3Root: any = VideoPage;
-  tab4Root: any = InstructionsPage;
+  tab1Root: any = 'HomePage';
+  tab2Root: any = 'RecipePage';
+  tab3Root: any = 'VideoPage';
+  tab4Root: any = 'InstructionsPage';
   
 
   constructor(private superTabsCtrl: SuperTabsController) {

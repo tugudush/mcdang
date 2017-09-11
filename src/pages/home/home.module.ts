@@ -12,4 +12,4 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
     IonicPageModule.forChild(HomePage),
   ],
 })
-export class InstructionsPageModule {}
+export class HomePageModule {}

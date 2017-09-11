@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the RegisterPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
-import { LoginPage } from '../login/login';
+//import { LoginPage } from '../login/login';
 import { RegisterEmailPage } from '../register-email/register-email';
 
 @IonicPage()
@@ -26,7 +20,7 @@ export class RegisterPage {
   }
 
   openLoginPage() {
-	this.navCtrl.push(LoginPage);
+	this.navCtrl.push('LoginPage');
   }
 
   openRegisterEmailPage() {

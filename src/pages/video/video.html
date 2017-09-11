@@ -19,13 +19,6 @@
       </ion-row>
     </ion-grid>
     <vg-player (onPlayerReady)="onPlayerReady($event)">
-      <!-- <div *ngIf="cuePointData?.title" class="info-layer">
-            <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3>
-            <p>
-                <img [src]="cuePointData?.src" align="left">
-                {{ cuePointData?.description }}
-            </p>
-        </div> -->
       <vg-overlay-play></vg-overlay-play>
       <vg-buffering></vg-buffering>
 
@@ -53,12 +46,10 @@
     <div *ngIf="cuePointData?.title">
       <!-- <h3><a [href]="cuePointData?.href" target="_blank">{{ cuePointData?.title }}</a></h3> -->
       <h3>{{ cuePointData?.title }}</h3>
-      <!-- <ion-scroll scrollY="true"> -->
         <p>
           <!-- <img [src]="cuePointData?.src" align="left"> -->
           {{ cuePointData?.description }}
         </p>
-      <!-- </ion-scroll> -->
     </div>
     <!-- <p>Swipe left for instructions <span>&raquo;</span></p>
     <p><span>&laquo;</span> Swipe right for recipe</p> -->

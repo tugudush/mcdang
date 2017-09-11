@@ -2,10 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { TabsPage } from '../pages/tabs/tabs';
-import { AboutPage } from '../pages/about/about';
-import { AdminPage } from '../pages/admin/admin';
-import { RegisterPage } from '../pages/register/register';
+//import { TabsPage } from '../pages/tabs/tabs';
+//import { AboutPage } from '../pages/about/about';
+//import { AdminPage } from '../pages/admin/admin';
+//import { RegisterPage } from '../pages/register/register';
 //import { InstructionsPage } from '../pages/instructions/instructions';
 
 @Component({
@@ -13,7 +13,7 @@ import { RegisterPage } from '../pages/register/register';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = RegisterPage;//RegisterPage; //RegisterPage;  //TabsPage;
+  rootPage: any = 'RegisterPage';//RegisterPage; //RegisterPage;  //TabsPage;
   public pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(
@@ -23,9 +23,9 @@ export class MyApp {
     private splashScreen: SplashScreen) {
     // Handle Menu
     this.pages = [
-      { title: 'About', component: AboutPage, icon: 'information-circle' },
-      { title: 'McDang', component: TabsPage, icon: 'apps' },
-      { title: 'Admin Only', component: AdminPage, icon: 'build' }
+      { title: 'About', component: 'AboutPage', icon: 'information-circle' },
+      { title: 'McDang', component: 'TabsPage', icon: 'apps' },
+      { title: 'Admin Only', component: 'AdminPage', icon: 'build' }
     ];
     menuCtrl.enable(true, 'myMenu');
     platform.ready().then(() => {

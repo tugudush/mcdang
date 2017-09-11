@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
 import { UtilProvider } from '../../providers/util/util';
 import { RecipeProvider } from '../../providers/recipe/recipe';
 import { VgAPI } from 'videogular2/core';
@@ -50,6 +51,7 @@ export class VideoPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
+    public toastCtrl: ToastController,
     public util: UtilProvider,
     public recipeProvider: RecipeProvider,
     public events: Events) {
@@ -129,20 +131,6 @@ export class VideoPage {
     this.api.play();
   }
 
-  // public setVideo(instruction: any) {
-  //   console.log("setVideo()");
-  //   //this.is_event = true;
-  //   if (instruction != null) {
-  //     console.log("received instruction " + instruction.title);
-  //     this.is_init = false;
-  //     //this.api.pause();
-  //     //this.createCueData();
-  //     this.api.getDefaultMedia().currentTime = instruction.timecode_start;
-  //     this.api.play();
-  //     //this.is_event = false;
-  //   }
-  // }
-
   public handleVideo() {
     console.log("VideoPage.handleVideo()");
   }
@@ -176,6 +164,7 @@ export class VideoPage {
     this.api.getDefaultMedia().subscriptions.canPlay.subscribe(
       () => {
         console.log(" -> media can play");
+        this.util.displayToast(this.toastCtrl,"Video is ready to play!", 1000);
         this.createCueData();
       });
     this.api.getDefaultMedia().subscriptions.ended.subscribe(

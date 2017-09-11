@@ -16,7 +16,7 @@ export class RecipePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CocktailPage');
+    console.log('ionViewDidLoad RecipePage');
   }
 
 }
