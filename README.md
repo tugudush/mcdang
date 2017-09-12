@@ -18,8 +18,11 @@ $ npm install
 Only works on device. The Cordova plugins don't work in browser 
 (doing `ionic serve`).
 
-## Beta Versions
-### Beta v1.2</h4>
+## Beta Version History
+### Beta v1.3
+* 'Loading' message replaced with Toast. Only indicate when video is loaded.
+
+### Beta v1.2
 * 'Loading' message to indicate video is loading while on the recipe page.
 * Catch android back button, prompting for exit. Encourages to use swipe and avoids navigation error.
 * Handle exit for ios to ensure that the app closes.

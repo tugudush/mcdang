@@ -8,20 +8,31 @@ import { UtilProvider } from '../providers/util/util';
 import { HttpModule } from '@angular/http';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import { RecipeProvider } from '../providers/recipe/recipe';
+// import { VideoPage } from '../pages/video/video';
+// import {VgCoreModule} from 'videogular2/core';
+// import {VgControlsModule} from 'videogular2/controls';
+// import {VgOverlayPlayModule} from 'videogular2/overlay-play';
+// import {VgBufferingModule} from 'videogular2/buffering';
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    //VideoPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    // VgCoreModule, 
+    // VgControlsModule,
+    // VgOverlayPlayModule,
+    // VgBufferingModule,
     SuperTabsModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    //VideoPage
   ],
   providers: [
     StatusBar,

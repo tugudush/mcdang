@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
-import { NavController, NavParams, ViewController} from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { UtilProvider } from '../../providers/util/util';
 import { RecipeProvider } from '../../providers/recipe/recipe';
 import { VgAPI } from 'videogular2/core';
@@ -55,25 +55,22 @@ export class VideoPage {
     public util: UtilProvider,
     public recipeProvider: RecipeProvider,
     public events: Events) {
-    console.log("VideoPage.constructor()");
-    // subscribe to event called from Instructions page 
+      console.log("VideoPage.constructor()");
+      this.recipe_data = this.recipeProvider.getRecipe_json();
+      // subscribe to event called from Instructions page 
     // to reset the video
-    events.subscribe('instruction', (instruction: any) => {
+    this.events.subscribe('instruction', (instruction: any) => {
       console.log("Instruction received from InstructionsPage");
       this.curr_instruction = instruction;
       this.curr_instruction_index = instruction.sequence;
       this.setVideo();
       //this.setVideo(instruction);
     });
-    
-
-    this.recipe_data = this.recipeProvider.getRecipe_json();
-    
+    // NOTE: Following Observables hould really be in ionViewDidLoad() but makes page unstable
     this.viewCtrl.didLeave.subscribe(
       () => {
         console.log("VideoPage -> didLeave event received..");
         if (!this.is_init && this.api != null) {
-         
           this.api.pause();
         }
         else {
@@ -98,7 +95,6 @@ export class VideoPage {
           else {
             console.log("ERROR: videogular api was not ready!")
           }
-
         } else {
           console.log(" -> Preload by supertabs .. Ignore!");
           this.is_init = false;
@@ -107,6 +103,10 @@ export class VideoPage {
           this.events.publish('load-video', true);
         }
       });
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad VideoPage');
   }
 
   public setVideo() {
@@ -122,14 +122,14 @@ export class VideoPage {
       this.curr_instruction = null;
       //this.is_event = false;
     }
-    else{
+    else {
       console.log(" -> No instruction allocated");
       //this.createCueData();
       this.api.play();
     }
   }
 
-  restartVideo(){
+  restartVideo() {
     this.api.getDefaultMedia().currentTime = 0;
     this.api.play();
   }
@@ -141,10 +141,6 @@ export class VideoPage {
   ngAfterViewInit() {
     console.log("ngAfterViewInit()");
 
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VideoPage');
   }
 
   // look at available events
@@ -193,7 +189,7 @@ export class VideoPage {
   // triggered when player time is bigger than 'start' cue point property
   onEnterCuePoint($event) {
     console.log("VideoPage.onEnterCuePoint()");
-   // console.log(" -> Event.text data: " + JSON.stringify($event.text));
+    // console.log(" -> Event.text data: " + JSON.stringify($event.text));
     this.cuePointData = JSON.parse($event.text);
     // need to determine sequence number of instruction here
     this.curr_time = this.api.getDefaultMedia().currentTime;
