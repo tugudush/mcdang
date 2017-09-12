@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
-import { NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ViewController} from 'ionic-angular';
 import { UtilProvider } from '../../providers/util/util';
 import { RecipeProvider } from '../../providers/recipe/recipe';
 import { VgAPI } from 'videogular2/core';
@@ -51,7 +51,7 @@ export class VideoPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public toastCtrl: ToastController,
+    //public loadingCtrl: LoadingController,
     public util: UtilProvider,
     public recipeProvider: RecipeProvider,
     public events: Events) {
@@ -65,6 +65,7 @@ export class VideoPage {
       this.setVideo();
       //this.setVideo(instruction);
     });
+    
 
     this.recipe_data = this.recipeProvider.getRecipe_json();
     
@@ -102,6 +103,8 @@ export class VideoPage {
           console.log(" -> Preload by supertabs .. Ignore!");
           this.is_init = false;
           this.curr_instruction_index = 0;  // start condition
+          // true when starting, false when finishing:
+          this.events.publish('load-video', true);
         }
       });
   }
@@ -164,12 +167,13 @@ export class VideoPage {
     this.api.getDefaultMedia().subscriptions.canPlay.subscribe(
       () => {
         console.log(" -> media can play");
-        this.util.displayToast(this.toastCtrl,"Video is ready to play!", 1000);
+        this.events.publish('load-video', false);
+        //this.util.displayToast(this.toastCtrl,"Video is ready to play!", 1000);
         this.createCueData();
       });
     this.api.getDefaultMedia().subscriptions.ended.subscribe(
       () => {
-        console.log(".. Set the video to the beginning");
+        console.log(".. Set the video to the beginning?");
       }
     );
   }
