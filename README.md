@@ -7,18 +7,36 @@ Install [Ionic](http://ionicframework.com/docs/) first. Note that Cordova needs 
 $ sudo npm install -g ionic cordova
 ```
 
-## Clone Git repository 
+## Installation
 
 After cloning, install with
 ```bash
 $ npm install
 ```
+To build the apk for android:
+```bash
+$ ionic cordova build android [--prod --release]
+$ adb devices (to check device is connected)
+$ adb install platforms/android/build/outputs/apk/mcdang_v*_*.apk
+```
+To run straight on the android device:
+```bash
+$ adb devices (to check device is connected)
+$ ionic cordova run android [--prod --release]
+```
 
 ## Usage
+
 Only works on device. The Cordova plugins don't work in browser 
 (doing `ionic serve`).
 
 ## Beta Version History
+
+### Beta v1.4
+* Fix video full-screen bug on ios
+* Register app on ios
+* Preliminary testing on ios mini ipad
+
 ### Beta v1.3
 * 'Loading' message replaced with Toast. Only indicate when video is loaded.
 
