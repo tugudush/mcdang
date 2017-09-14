@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
 //import { LoginPage } from '../login/login';
-import { RegisterEmailPage } from '../register-email/register-email';
+//import { RegisterEmailPage } from '../register-email/register-email';
 
 @IonicPage()
 @Component({
@@ -20,11 +20,11 @@ export class RegisterPage {
   }
 
   openLoginPage() {
-	this.navCtrl.push('LoginPage');
+    this.navCtrl.push('LoginPage');
   }
 
   openRegisterEmailPage() {
-	this.navCtrl.push(RegisterEmailPage);
+    this.navCtrl.push('RegisterEmailPage');
   }
 
 }

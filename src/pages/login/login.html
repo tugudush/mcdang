@@ -6,21 +6,22 @@
 </ion-header>
 
 <ion-content padding class="login">
-  
-  <ion-list>
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <ion-list>
 
-    <ion-item>
-      <ion-label floating>Enter Email</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Enter Email</ion-label>
+        <ion-input type="email" name="email" [(ngModel)]="loginCredentials.email" pattern="[A-Za-z0-9._%+-]{1,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" required></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="loginCredentials.password" required></ion-input>
+      </ion-item>
 
-  </ion-list>
-  <div class="submit-section">
-    <button ion-button full medium color="dark" class="submit-btn" (click)='openHomePage()' >LOGIN</button>
-  </div>
+    </ion-list>
+    <div class="submit-section">
+      <button ion-button full medium color="dark" type="submit" class="submit-btn" [disabled]="!loginForm.form.valid" >LOGIN</button>
+    </div>
+  </form>
 </ion-content>

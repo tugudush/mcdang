@@ -6,26 +6,27 @@
 </ion-header>
 
 <ion-content padding class="registration">
-  
-  <ion-list>
+  <form (ngSubmit)="register()" #registerForm="ngForm">
+    <ion-list>
 
-    <ion-item>
-      <ion-label floating>Enter Email</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Enter Email</ion-label>
+        <ion-input type="email" name="email" [(ngModel)]="registerCredentials.email" pattern="[A-Za-z0-9._%+-]{1,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" required></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" name="password" maxlength="24" minlength="4" [(ngModel)]="registerCredentials.password" required></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Confirm Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" name="confirm_password" maxlength="24" minlength="4" [(ngModel)]="registerCredentials.confirm_password" required></ion-input>
+      </ion-item>
 
-  </ion-list>
-  <div class="submit-section">
-    <button ion-button full medium color="dark" class="submit-btn" >Register</button>
-  </div>
+    </ion-list>
+    <div class="submit-section">
+      <button ion-button full type="submit" medium color="dark" class="submit-btn" [disabled]="!registerForm.form.valid" >Register</button>
+    </div>
+  </form>
 </ion-content>
