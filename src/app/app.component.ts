@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController } from 'ionic-angular';
+import { Nav, Platform, App, AlertController, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 //import { TabsPage } from '../pages/tabs/tabs';
@@ -17,7 +17,9 @@ export class MyApp {
   public pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(
-    platform: Platform,
+    public platform: Platform,
+    public alertCtrl: AlertController, 
+    public app: App,
     statusBar: StatusBar,
     menuCtrl: MenuController,
     private splashScreen: SplashScreen) {
@@ -34,22 +36,56 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      splashScreen.hide();
+      this.registerBackButton();
     });
 
     platform.pause.subscribe(() => {
       console.log('[INFO] App paused');
-      this.hideSplashScreen();
+      //this.hideSplashScreen();
     });
 
     platform.resume.subscribe(() => {
       console.log('[INFO] App resumed');
+      //this.registerBackButton();
       //this.hideSplashScreen();
       //this.initialiseApp();
       //this.util.reloadApp(this.alertCtrl,"Restart to upload latest data ...")
       //window.location.reload();
     });
   }
+
+  registerBackButton(){
+    console.log("App.registerBackButton()");
+    //Registration of push in Android and Windows Phone
+      this.platform.registerBackButtonAction(() => {
+        let nav = this.app.getActiveNav();
+        if (nav.canGoBack()){ //Can we go back?
+          console.log(" --> can go back, popping");
+          nav.pop();
+        }else{
+          let alert = this.alertCtrl.create({
+            title: "EXIT McDang?",
+            message: " Do you want to exit McDang?",
+            buttons: [{
+              text: 'YES',
+              handler: data => {
+                console.log(" --> exiting");
+                this.platform.exitApp(); //Exit from app;
+              }
+            }, {
+              text: 'NO',
+              handler: data => {
+                console.log(" --> Do Nothing");
+                //nav.setRoot('TabsPage');
+              }
+            }]
+          });
+          alert.present();   
+        }
+      });
+  }
+
+
 
   hideSplashScreen() {
     if (this.splashScreen) {
