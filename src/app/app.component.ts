@@ -41,11 +41,14 @@ export class MyApp {
 
     platform.pause.subscribe(() => {
       console.log('[INFO] App paused');
+      console.log(" -> closing app ..");
+      platform.exitApp();
       //this.hideSplashScreen();
     });
 
     platform.resume.subscribe(() => {
       console.log('[INFO] App resumed');
+      //this.rootPage = 'TabsPage';
       //this.registerBackButton();
       //this.hideSplashScreen();
       //this.initialiseApp();
@@ -84,8 +87,6 @@ export class MyApp {
         }
       });
   }
-
-
 
   hideSplashScreen() {
     if (this.splashScreen) {
