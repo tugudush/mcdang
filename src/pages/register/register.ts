@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+//import { TabsPage } from '../tabs/tabs';
+//import { MyApp } from '../../app/app.component';
 
 
 //import { LoginPage } from '../login/login';
@@ -25,6 +27,10 @@ export class RegisterPage {
 
   openRegisterEmailPage() {
     this.navCtrl.push('RegisterEmailPage');
+  }
+  // testing only
+  bypass_login(){
+    this.navCtrl.setRoot('TabsPage');
   }
 
 }

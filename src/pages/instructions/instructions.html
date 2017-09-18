@@ -8,7 +8,7 @@
 <ion-content class="instructions-content" padding>
 	<div class="scroll-holder">
 		<ion-list *ngFor="let instruction of recipe_data.recipe.instructions">
-			<ion-item #myitem (click)="handleInstructionClick(instruction)">
+			<ion-item no-lines #myitem (click)="handleInstructionClick(instruction)">
 				<button ion-button clear item-start><ion-icon ios="ios-arrow-dropleft-outline" md="ios-arrow-dropleft"></ion-icon></button>
 				<ion-row>
 					<ion-col width-90>
