@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 //import { TabsPage } from '../tabs/tabs';
-import { VideoPage } from '../video/video';
+//import { VideoPage } from '../video/video';
 //import { InstructionsPage } from '../instructions/instructions';
 //import { RecipePage } from '../recipe/recipe';
 
@@ -24,7 +24,7 @@ export class AdminPage {
   }
 
   goToVideoPage(){
-    this.navCtrl.setRoot(VideoPage);
+    this.navCtrl.setRoot('VideoPage');
   }
 
   goToInstructionsPage(){
