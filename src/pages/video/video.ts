@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage , Platform } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
 import { UtilProvider } from '../../providers/util/util';
 import { RecipeProvider } from '../../providers/recipe/recipe';
@@ -48,7 +48,7 @@ export class VideoPage {
   public curr_instruction: any;
   public curr_instruction_index: number;
   public curr_time: number = 0;
-  private recognition_is_active: boolean = false;
+  //private recognition_is_active: boolean = false;
   //language, nujmber of matches, prompt text (android), show popup (android), showPartial results (ios)
   // private recognition_options: SpeechRecognitionListeningOptions;
   // private iosOptions: SpeechRecognitionListeningOptionsIOS;
@@ -58,7 +58,6 @@ export class VideoPage {
     public navParams: NavParams,
     public viewCtrl: ViewController,
     public toastCtrl: ToastController,
-    private platform: Platform,
     public util: UtilProvider,
     public recipeProvider: RecipeProvider,
     //public speechRecognition: SpeechRecognition,
