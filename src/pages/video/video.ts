@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage , Platform } from 'ionic-angular';
+import { NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
 import { UtilProvider } from '../../providers/util/util';
 import { RecipeProvider } from '../../providers/recipe/recipe';
 import { VgAPI } from 'videogular2/core';
 // enables calling another component using events
 import { Events } from 'ionic-angular';
+//import { SpeechProvider } from '../../providers/speech/speech';
+//import { SpeechRecognition, SpeechRecognitionListeningOptions, SpeechRecognitionListeningOptionsAndroid, SpeechRecognitionListeningOptionsIOS } from '@ionic-native/speech-recognition';
 
 // ref: https://github.com/videogular/videogular2/tree/master/docs
 // ref: https://www.youtube.com/embed/-wXfJvb9Ae0
 // ref: https://forum.ionicframework.com/t/solved-ionic-2-and-videogular-2-scss/89454/3
-
 // ref: https://github.com/videogular/videogular2-showroom/blob/master/src/app/cue-points-player/cue-points-player.component.ts
 export interface ICuePoint {
   title: string;
@@ -47,17 +48,24 @@ export class VideoPage {
   public curr_instruction: any;
   public curr_instruction_index: number;
   public curr_time: number = 0;
+  private recognition_is_active: boolean = false;
+  //language, nujmber of matches, prompt text (android), show popup (android), showPartial results (ios)
+  // private recognition_options: SpeechRecognitionListeningOptions;
+  // private iosOptions: SpeechRecognitionListeningOptionsIOS;
+  // private androidOptions: SpeechRecognitionListeningOptionsAndroid;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    //public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController,
+    private platform: Platform,
     public util: UtilProvider,
     public recipeProvider: RecipeProvider,
+    //public speechRecognition: SpeechRecognition,
     public events: Events) {
-      console.log("VideoPage.constructor()");
-      this.recipe_data = this.recipeProvider.getRecipe_json();
-      // subscribe to event called from Instructions page 
+    console.log("VideoPage.constructor()");
+    this.recipe_data = this.recipeProvider.getRecipe_json();
+    // subscribe to event called from Instructions page 
     // to reset the video
     this.events.subscribe('instruction', (instruction: any) => {
       console.log("Instruction received from InstructionsPage");
@@ -218,6 +226,78 @@ export class VideoPage {
       this.track.addCue(new VTTCue(parseFloat(instruction['timecode_start']), parseFloat(instruction['timecode_stop']), jsonTxt));
     }
   }
+
+  // // https://github.com/pbakondy/cordova-plugin-speechrecognition
+  // // https://ionicframework.com/docs/native/speech-recognition/
+  // // http://vpt-deeplearner.tech/2017/01/21/ionic-2-an-example-of-speech-recognition-on-mobile-phones/
+  // voiceRecognition() {
+  //   //console.log("Starting voice recognition..");
+  //   if (this.recognition_is_active) {
+  //     console.log("Stop Listening");
+  //     this.speechRecognition.stopListening();
+  //     this.recognition_is_active = false;
+  //   }
+  //   else {
+  //     //console.log(" -> available? " + this.speechProvider.isAvailable());
+  //     this.speechRecognition.isRecognitionAvailable().then(
+  //       (isAvailable: boolean) => {
+  //         if (isAvailable) {
+  //           console.log("Speech Recognition is available");
+  //           this.speechRecognition.hasPermission().then(
+  //             (hasPermission: boolean) => {
+  //               if (hasPermission) {
+  //                 console.log("Speech Recognition has permission");
+  //                 this.startListening();
+
+  //               } else {
+  //                 console.log("Speech Recognition has no permission");
+  //                 this.speechRecognition.requestPermission()
+  //                   .then(
+  //                   () => {
+  //                     console.log('Permission Granted');
+  //                     this.startListening();
+  //                   },
+  //                   () => {
+  //                     console.log("Permission Denied");
+  //                     this.util.displayToast(this.toastCtrl, "Speech Recognition not availablePermission denied!", 3000);
+  //                   });
+  //               }
+  //             }
+  //           )
+  //         } else {
+  //           this.util.displayToast(this.toastCtrl, "Speech Recognition not available!", 3000);
+  //         }
+  //       });
+  //   }
+  // }
+
+  // startListening() {
+  //   console.log("VideoPage.startListening()");
+  //   if(this.platform.is('android')){
+  //     this.androidOptions = {
+  //         matches: 1, showPopup: false
+  //     };
+  //     this.recognition_options = this.androidOptions;
+  //   } else if (this.platform.is('ios')){
+  //     this.iosOptions = {
+  //       matches: 1
+  //     };
+  //     this.recognition_options = this.iosOptions;
+  //   }
+
+  //   this.speechRecognition.startListening(this.recognition_options)
+  //     .subscribe(
+  //     (matches: Array<string>) => {
+  //       console.log(matches);
+  //       this.recognition_is_active = true;
+  //     },
+  //     (onerror) => {
+  //       console.log('VideoPage.startListening() ERROR: ', onerror);
+  //       this.speechRecognition.stopListening();
+  //       this.recognition_is_active = false;
+  //     }
+  //     )
+  // }
 }
 
 // "https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-523157505716/mcdang/videogular.mp4" 

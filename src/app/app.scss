@@ -88,6 +88,15 @@
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
 	}
 }
+.navbtn{
+	background: $navicon-bg-col;
+}
+.nav-icon{
+	padding:5px;
+	font-size:30px;
+	//color:$danger-color;
+	//background: $navicon-bg-col;
+}
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
 	.ion-page > ion-content {

@@ -20,8 +20,7 @@ import { AuthService } from '../providers/user/auth-service';
 
 @NgModule({
   declarations: [
-    MyApp,
-    //VideoPage
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -35,8 +34,7 @@ import { AuthService } from '../providers/user/auth-service';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    //VideoPage
+    MyApp
   ],
   providers: [
     StatusBar,

@@ -50,7 +50,7 @@
         "ionic_sass": "./scripts/ionic.sass.config.js",
         "ionic_copy": "./scripts/ionic.copy.config.js"
     },
-    "description": "Happy Hour",
+    "description": "McDang",
     "cordova": {
         "plugins": {
             "cordova-plugin-console": {},
