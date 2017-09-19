@@ -2,26 +2,27 @@
   <ion-navbar>
     <!-- <ion-title>Register</ion-title> -->
     <img src="assets/img/logo.png" />
-    <ion-buttons end>
+    <!-- <ion-buttons end>
         <button (click)="restartVideo()" class="navbtn"><ion-icon name="repeat" class="nav-icon"></ion-icon></button>
-        <!-- <button (click)="voiceRecognition()" class="navbtn"><ion-icon name="mic" class="nav-icon"></ion-icon></button> -->
-      </ion-buttons>
+        <button (click)="voiceRecognition()" class="navbtn"><ion-icon name="mic" class="nav-icon"></ion-icon></button>
+      </ion-buttons> -->
   </ion-navbar>
 </ion-header>
 
 
 <ion-content class="video-content" padding>
   <div class="scroll-holder">
-    <!-- <ion-grid>
+    <ion-grid>
       <ion-row>
-        <ion-col col-9> -->
+        <ion-col col-9>
           <h1 class="heading">{{ recipe_data.recipe.name }}</h1>
-        <!-- </ion-col>
-        <ion-col col-3 class="text-right"> -->
+        </ion-col>
+        <ion-col col-3 class="text-right">
+            <button (click)="restartVideo()" class="navbtn"><ion-icon name="repeat" class="nav-icon"></ion-icon></button>
           <!-- <button ion-button clear color="primary" (click)="restartVideo()">Restart</button> -->
-        <!-- </ion-col>
+        </ion-col>
       </ion-row>
-    </ion-grid> -->
+    </ion-grid>
     <vg-player (onPlayerReady)="onPlayerReady($event)" vg-plays-inline="true" vg-native-fullscreen="false">
       <vg-overlay-play></vg-overlay-play>
       <vg-buffering></vg-buffering>
